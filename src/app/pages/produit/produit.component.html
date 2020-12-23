@@ -1,0 +1,85 @@
+
+ <div class="col-md-6">
+    <!-- general form elements -->
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title"> Ajouter un Produit  </h3>
+      </div>
+      <!-- /.card-header -->
+      <!-- form start -->
+      <form>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleInputnom"> Nom </label>
+            <input name="nom" type="text"  
+            class="form-control" 
+            id="exampleInputnom"
+             placeholder="Enter nom"
+              [(ngModel)]="produitform.nom">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputprice"> Price </label>
+            <input name="price" type="text"  
+            class="form-control"
+            id="exampleInputprice" 
+            placeholder="price" [(ngModel)]="produitform.price">
+          </div> 
+
+          <div class="form-group">
+            <label for="exampleInputcategorie"> Categorie </label>
+            <input name="categorie" type="text" 
+             class="form-control" 
+            id="exampleInputcategorie" 
+            placeholder="categorie" 
+            [(ngModel)]="produitform.categorie">
+          </div> 
+
+          <div class="form-group">
+            <label for="exampleInputPassword1"> Type </label>
+            <input name="type" type="text"  
+            class="form-control" id="exampleInputtype" 
+             placeholder="Type" [(ngModel)]="produitform.type">
+          </div>
+      
+         </div>
+        <!-- /.card-body -->
+
+        <div class="card-footer">
+          <button  type="submit" (click)="addProduit()"
+           class="btn btn-primary"> Ajouter </button>
+        </div>
+      </form>
+    </div>
+    <!-- /.card -->
+
+
+<table class="table table-bordered">    
+  <div class="panel panel-default">
+  <div class="panel-heading">
+    La liste des produits disponibles sur notre vitrine .
+  </div>
+    <thead>
+    <tr>
+      <td>Name</td>
+      <td>Price</td>
+      <td>Categorie</td>
+      <td>Type</td>
+      <td colspan="3" class="text-center" >Action</td>
+    </tr>
+    </thead>
+    <tbody>
+     <tr  *ngFor="let produit of produits">
+      <td>{{produit.nom}}</td>
+      <td>{{produit.price}}</td>
+      <td>{{produit.categorie}}</td>
+      <td>{{produit.type}}</td>
+      <td>  
+        <a class="btn btn-info"  routerLink="/dash/show/{{produit._id}}"  >Detail</a> 
+      </td>  
+      <td> <a routerLink="/dash/edit/{{produit._id}}" class="btn btn-success" >Edit</a> </td>
+       <td><a class="btn btn-danger" (click)="deleteproduit(produit._id)">Delete</a>
+       </td>
+     </tr>
+    </tbody>
+    </div> 
+  </table>
